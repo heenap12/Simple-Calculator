@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        button{
+            width: 50px;
+            background-color: rgb(239, 220, 223);
+            border-radius: 5px;
+        }
+        button:hover{
+            transform: scale(1.1);
+        
+        }
+        input{
+            width: 210px;
+            background-color: rgb(204, 227, 219);
+            border-radius: 5px;
+        }
+        @media screen  and (max-width:600px) { 
+           #main{
+            width: 100px;
+            position: absolute;
+            left: -240px;
+            top: 50px;
+           }
+           
+          
+        }
+    </style>
+</head>
+<body>
+    <div id="main" style="width: 223px;height: 200px;background: rgb(120, 45, 191);margin-top: 30px;margin-left: 250px;"><div id="calc" style="font-weight: bolder;font-size: large;color: whitesmoke;margin-left: 50px;margin-top: 30px;padding: 5px 0;">CALCULATOR</div>
+    <center><table style="position: absolute;top: 60px;">
+        <tr>
+            <td colspan="4"><input type="text" id="screen" autofocus></td>
+        </tr>
+        <tr>
+            <td><button id="ac" onclick="f1()">AC</button></td>
+            <td><button id="ce">CE</button></td>
+            <td><button class="btn">/</button></td>
+            <td><button class="btn">%</button></td>
+        </tr>
+        <tr>
+            <td><button class="btn">1</button></td>
+            <td><button class="btn">2</button></td>
+            <td><button class="btn">3</button></td>
+            <td><button class="btn">+</button></td>
+        </tr>
+        <tr>
+            <td><button class="btn">4</button></td>
+            <td><button class="btn">5</button></td>
+            <td><button class="btn">6</button></td>
+            <td><button class="btn">-</button></td>
+        </tr>
+        <tr>
+            <td><button class="btn">7</button></td>
+            <td><button class="btn">8</button></td>
+            <td><button class="btn">9</button></td>
+            <td><button class="btn">*</button></td>
+        </tr>
+        <tr>
+            <td><button class="btn">0</button></td>
+            <td><button class="btn">00</button></td>
+            <td><button class="btn">.</button></td>
+            <td><button id="eq">=</button></td>
+        </tr>
+    </center>
+    </table>
+    </div>
+
+    <script>
+        let s=document.getElementById('screen')
+        let b=document.getElementsByClassName('btn')
+        console.log(s);
+        console.log(b);
+        for(let i=0;i<b.length;i++)
+        {
+            console.log(b[i]);
+            b[i].addEventListener("click",function(){
+                s.value=s.value+b[i].innerHTML
+            })
+        }
+        function f1()
+        {
+            document.getElementById('screen').value="" 
+        }
+        let d=document.getElementById('ce')
+            d.addEventListener('click',function(){
+            s.value=s.value.slice(0,s.value.length-1)
+        })
+        let e=document.getElementById('eq')
+        e.addEventListener('click',()=>{
+            s.value=eval(s.value)
+        })
+    </script>
+</body>
+</html>
